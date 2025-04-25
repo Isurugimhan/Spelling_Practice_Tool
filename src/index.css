@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define CSS Variables for Theme Colors */
+:root {
+  /* Light Theme Accent (Strong Purple from Screenshot - e.g., purple-600) */
+  --color-accent: 124 58 237;  /* #7C3AED */
+  --color-accent-dark: 107 33 168; /* #6B21A8 - purple-700 */
+
+  /* Base background/text are now handled by tailwind config */
+}
+
+.dark {
+  /* Dark Theme Accent (Slightly brighter Purple - e.g., purple-500) */
+  --color-accent: 139 92 246;  /* #8B5CF6 */
+  --color-accent-dark: 124 58 237; /* #7C3AED - purple-600 */
+
+  /* Base background/text are now handled by tailwind config */
+}
+
+body {
+  @apply bg-cream-bg dark:bg-dark-bg text-text-main dark:text-dark-text-main transition-colors duration-300 ease-in-out;
+  font-family: sans-serif; /* Basic sans-serif, can be customized further */
+}
+
+/* Add custom base styles or component styles here if needed */
+
+/* Example: Softer focus rings */
+@layer base {
+  *:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-accent ring-offset-cream-bg dark:ring-offset-dark-bg rounded-md;
+    /* Tailwind handles the dark mode ring color automatically */
+  }
+}
+
+/* Custom animation for gradient text */
+@layer utilities {
+  @keyframes textGradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-text-gradient {
+    animation: textGradientAnimation 4s ease infinite;
+  }
+} 

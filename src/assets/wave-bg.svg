@@ -1,0 +1,5 @@
+<svg viewBox="0 0 1920 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Use a darker, semi-transparent fill for better dark mode compatibility -->
+  <path fill="rgba(40, 80, 23, 0.4)" d="M 0 0 C 466.5 0 466.5 424 933 424 L 933 424 L 933 0 L 0 0 Z" stroke-width="0"></path>
+  <path fill="rgba(40, 80, 23, 0.4)" d="M 932 424 C 1426 424 1426 105 1920 105 L 1920 105 L 1920 0 L 932 0 Z" stroke-width="0"></path>
+</svg> 
