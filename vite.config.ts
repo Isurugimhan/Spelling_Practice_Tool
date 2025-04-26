@@ -4,6 +4,6 @@ import react from '@vitejs/plugin-react';
 // Minimal config to test base path
 export default defineConfig({
   plugins: [react()],
-  base: '/Spelling_Practice_Tool/',
+  base: '/',
   clearScreen: false // Adding this just to make build logs potentially more verbose
 });

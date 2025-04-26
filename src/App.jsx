@@ -240,7 +240,7 @@ function App() {
       setDefinitionData(null);
       setDefinitionError(null);
     }
-  }, [customText, isCustomMode, splitWords, checkPunctuation]);
+  }, [isCustomMode, customText, splitWords, checkPunctuation]);
 
   // --- Handlers ---
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
@@ -655,8 +655,8 @@ function App() {
                            const incorrectColor = isDarkMode ? 'text-red-400' : 'text-red-600';
                            const suggestionColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
                            return (
-                               <span key={index} className={`mr-1 ${result.isCorrect ? correctColor : incorrectColor + ' line-through decoration-red-500 decoration-2'}`}>
-                                   {result.typed || ''}
+                               <span key={index} className={`mr-1 ${result.isCorrect ? correctColor : incorrectColor}`}>
+                                   <span className={result.isCorrect ? '' : 'line-through decoration-red-500 decoration-2'}>{result.typed || ''}</span>
                                    {!result.isCorrect && result.typed && result.correct && (
                                        <span className={`${suggestionColor} no-underline ml-1 decoration-transparent font-sans text-sm lg:text-base`}>({result.correct})</span>
                                    )}
@@ -741,4 +741,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
