@@ -606,7 +606,35 @@ function App() {
              {!isCustomMode && originalWords.length === 0 && (<div className={`border rounded-xl p-4 min-h-[150px] relative flex items-center justify-center transition ${isDarkMode ? 'border-dark-border-soft/30 bg-dark-bg/50' : 'border-border-soft bg-cream-panel/50'}`}><p className={`italic text-sm lg:text-base ${isDarkMode ? 'text-dark-text-secondary' : 'text-text-secondary'}`}>{storyText}</p></div>)}
 
              {/* Adjust custom text input background */}
-             {isCustomMode && ( <div><label htmlFor="customTextInput" className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-dark-text-secondary' : 'text-text-secondary'}`}>Enter Custom Text</label><textarea id="customTextInput" value={customText} onChange={handleCustomTextChange} placeholder="Paste or type your custom text here..." className={`w-full h-40 p-3 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition resize-y text-base lg:text-lg ${isDarkMode ? 'border-dark-border-soft bg-dark-bg text-dark-text-main' : 'border-border-soft bg-white text-text-main'}`}/></div>)}
+             {isCustomMode && (
+                <div>
+                  <label htmlFor="customTextInput" className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-dark-text-secondary' : 'text-text-secondary'}`}>Enter Custom Text</label>
+                  <textarea
+                    id="customTextInput"
+                    value={customText}
+                    onChange={handleCustomTextChange}
+                    placeholder="Paste or type your custom text here..."
+                    className={`w-full h-40 p-3 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition resize-y text-base lg:text-lg ${isDarkMode ? 'border-dark-border-soft bg-dark-bg text-dark-text-main' : 'border-border-soft bg-white text-text-main'}`}
+                  />
+                  {customText && originalWords.length > 0 && (
+                    <div className={`border rounded-xl p-4 pt-10 lg:pt-10 min-h-[150px] relative transition ${isDarkMode ? 'border-dark-border-soft/30 bg-dark-bg/50' : 'border-border-soft bg-cream-panel/50'}`}>
+                      <p className={`whitespace-pre-wrap leading-relaxed break-words font-serif text-base lg:text-lg ${isDarkMode ? 'text-dark-text-main' : 'text-text-main'}`}>
+                        {originalWords.map((word, index) => (
+                          <React.Fragment key={index}>
+                            <span
+                              onClick={() => fetchDefinition(word)}
+                              className={`p-0.5 rounded transition-colors duration-150 cursor-pointer hover:bg-accent/20 dark:hover:bg-accent/20 ${index === currentWordIndex ? 'bg-accent/40 dark:bg-accent/40 dark:drop-shadow-[0_0_3px_theme(colors.accent/70%)]' : 'bg-transparent'} ${selectedWordForDetails === word ? 'ring-1 ring-accent dark:ring-accent' : ''}`}
+                            >
+                              {word}
+                            </span>
+                            {' '}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
 
              {/* Adjust user input area background */}
              <div className={`border rounded-xl p-4 transition ${isDarkMode ? 'border-dark-border-soft/30 bg-dark-bg/50' : 'border-border-soft bg-cream-panel/50'}`}>
